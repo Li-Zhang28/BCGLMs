@@ -7,3 +7,10 @@ We employ a structured regularized horseshoe prior for the compositional coeffic
 The models are fitted using efficient Hamiltonian Monte Carlo algorithm.
 
 Author: Li Zhang [lzhang28@uab.edu](mailto:lzhang28@uab.edu)
+
+# Installation 
+
+Install the released version of remotes from CRAN:
+##
+    library(remotes)
+    install_github("Li-Zhang28/BCGLMs", force=T, build_vignettes=T)
