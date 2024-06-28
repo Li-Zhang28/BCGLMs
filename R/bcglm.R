@@ -74,21 +74,6 @@ bcglm <- function(x,y,family=gaussian,plot=TRUE) {
   f4= brm(fm, data=dat,family=family,prior=bp4, stanvars=stanvars,control = list(adapt_delta = 0.99,max_treedepth= 18),
           chains=2, iter=2000)
 
-#   samples4 = fixef(f4)
-#
-#   ploo1 = loo_predict(f4)
-#
-# if (fam=="gaussian"){
-#   cv=measure.glm(y, ploo1, family="gaussian")}
-#
-# if (fam=="bernoulli"){
-#   cv=measure.glm(y, ploo1, family="binomial")}
-#
-#
-# if (plot){
-#   mc=mcmc_plot(f4,variable = "^b_X", regex = TRUE)
-#   return(list(summary=samples4,loo=cv,plot=mc))}else{
-#     return(list(summary=samples4,loo=cv))}
 }
 
 
