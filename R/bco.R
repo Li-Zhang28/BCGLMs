@@ -71,11 +71,11 @@ bco <- function(x,y,plot=TRUE) {
   f4= brm(fm, data=dat,family = cumulative("logit"),prior=bp4, stanvars=stanvars,init_r=0.1, control = list(adapt_delta = 0.99,max_treedepth= 20),
           chains=2, iter=2000)
 
-  samples4 = fixef(f4)
-
-
-  if (plot)
-  {mc=mcmc_plot(f4,variable = "^b_X", regex = TRUE)
-  return(list(summary=samples4,plot=mc))}
-  else{return(samples4)}
+  # samples4 = fixef(f4)
+  #
+  #
+  # if (plot)
+  # {mc=mcmc_plot(f4,variable = "^b_X", regex = TRUE)
+  # return(list(summary=samples4,plot=mc))}
+  # else{return(samples4)}
 }
