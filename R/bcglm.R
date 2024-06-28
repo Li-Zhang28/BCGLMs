@@ -9,6 +9,11 @@
 #' @importFrom stats gaussian quantile
 #' @return
 #' @export
+#' @examples dat=sim_c(200,100)
+#'           fit=bcglm(dat$x,dat$y)
+#'           summary(fit)
+#'           fixef(fit)
+#'           mcmc_plot(fit)
 #' @author Li Zhang
 #' @references \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
 bcglm <- function(x,y,family=gaussian,plot=TRUE) {

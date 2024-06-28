@@ -8,6 +8,11 @@
 #' @importFrom stats gaussian quantile
 #' @return
 #' @export
+#' @examples dat=sim_o(200,100)
+#'           fit=bco(dat$x,dat$y)
+#'           summary(fit)
+#'           fixef(fit)
+#'           mcmc_plot(fit)
 #' @author Li Zhang
 #' @references \url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}
 bco <- function(x,y,plot=TRUE) {
