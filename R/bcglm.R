@@ -2,7 +2,6 @@
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (binary or continuous)
 #' @param family gaussian or bernoulli
-#' @param plot if TRUE, shows the plots (default = TRUE)
 #' @import phyloseq
 #' @import brms
 #' @import BhGLM
@@ -16,7 +15,7 @@
 #'           mcmc_plot(fit)
 #' @author Li Zhang
 #' @references \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
-bcglm <- function(x,y,family=gaussian,plot=TRUE) {
+bcglm <- function(x,y,family=gaussian) {
 
   fam=deparse(substitute(family))
 

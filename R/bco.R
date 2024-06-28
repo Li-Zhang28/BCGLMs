@@ -1,7 +1,6 @@
 #' Bayesian Compositional Ordinal Regression
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (ordinal)
-#' @param plot if TRUE, shows the plots (default = TRUE)
 #' @import phyloseq
 #' @import brms
 #' @import BhGLM
@@ -15,7 +14,8 @@
 #'           mcmc_plot(fit)
 #' @author Li Zhang
 #' @references \url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}
-bco <- function(x,y,plot=TRUE) {
+
+bco <- function(x,y) {
 
   dist = c("bray", "jaccard", "jsd", "unifrac", "wunifrac", "dpcoa")
   m = dist[1]
