@@ -17,7 +17,8 @@ sim_o(n, p, q = c(0.2, 0.5))
 
 }
 \description{
-Simulation for ordinal response and compositional predictors
+Simulation of data with dependent compositional predictors and ordinal response.
+The simulation setting and dependence structure can be inferred from paper.
 }
 \references{
 \url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}

@@ -21,7 +21,8 @@ Bayesian compositional GLMs methods for microbiome data with continuous or binar
 }
 \examples{
 dat=sim_c(200,100)
-          fit=bcglm(dat$x,dat$y)
+          sim=similarity(dat$x)
+          fit=bcglm(dat$x,dat$y,similarity=sim)
           summary(fit)
           fixef(fit)
           mcmc_plot(fit)

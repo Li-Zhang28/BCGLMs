@@ -1,4 +1,6 @@
 #' Simulation for ordinal response and compositional predictors
+#' @description Simulation of data with dependent compositional predictors and ordinal response.
+#' The simulation setting and dependence structure can be inferred from paper.
 #' @param n sample size
 #' @param p dimension of compositional predictors
 #' @param q quantiles for generating ordinal response

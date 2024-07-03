@@ -1,6 +1,6 @@
 #' Simulation for continuous response and compositional predictors
 #' @description Simulation of data with dependent compositional predictors and continuous response.
-#' The complex dependence structure can be inferred from paper.
+#' The simulation setting and dependence structure can be inferred from paper.
 #' @param n sample size
 #' @param p dimension of compositional predictors
 #' @return

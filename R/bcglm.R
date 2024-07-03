@@ -10,7 +10,8 @@
 #' @return
 #' @export
 #' @examples dat=sim_c(200,100)
-#'           fit=bcglm(dat$x,dat$y)
+#'           sim=similarity(dat$x)
+#'           fit=bcglm(dat$x,dat$y,similarity=sim)
 #'           summary(fit)
 #'           fixef(fit)
 #'           mcmc_plot(fit)
