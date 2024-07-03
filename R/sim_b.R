@@ -1,4 +1,6 @@
 #' Simulation for binary response and compositional predictors
+#' @description Simulation of data with dependent compositional predictors and binary response.
+#' The complex dependence structure can be inferred from paper.
 #' @param n sample size
 #' @param p dimension of compositional predictors
 #' @param q quantile for generating binary response
@@ -6,6 +8,7 @@
 #' @export
 #' @import phyloseq
 #' @import MASS
+#' @references \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
 sim_b <- function(n,p,q=0.5) {
   gammatrue=rep(0,p)
   true_index=seq(18,40,by=2)

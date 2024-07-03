@@ -10,7 +10,7 @@
 #'
 #' @docType package
 #'
-#' @author Li Zhang <lzhang28@uab.edu>
+#' @author Li Zhang <Li.Zhang@fccc.edu>
 #'
 #' @name brms
 #' @name BhGLM

@@ -15,5 +15,9 @@ sim_c(n, p)
 
 }
 \description{
-Simulation for continuous response and compositional predictors
+Simulation of data with dependent compositional predictors and continuous response.
+The complex dependence structure can be inferred from paper.
+}
+\references{
+\url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
 }

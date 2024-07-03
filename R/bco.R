@@ -1,4 +1,5 @@
 #' Bayesian Compositional Ordinal Regression
+#' @description Bayesian compositional method for microbiome data with ordinal outcome.
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (ordinal)
 #' @import phyloseq

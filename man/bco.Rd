@@ -4,20 +4,26 @@
 \alias{bco}
 \title{Bayesian Compositional Ordinal Regression}
 \usage{
-bco(x, y, plot = TRUE)
+bco(x, y, similarity = NULL)
 }
 \arguments{
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
 
 \item{y}{outcome (ordinal)}
-
-\item{plot}{if TRUE, shows the plots (default = TRUE)}
 }
 \value{
 
 }
 \description{
-Bayesian Compositional Ordinal Regression
+Bayesian compositional method for microbiome data with ordinal outcome.
+}
+\examples{
+dat=sim_o(200,100)
+          fit=bco(dat$x,dat$y)
+          summary(fit)
+          fixef(fit)
+          mcmc_plot(fit)
+
 }
 \references{
 \url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}

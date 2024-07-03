@@ -6,6 +6,7 @@
 #' @export
 #' @import phyloseq
 #' @import MASS
+#' @references \url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}
 sim_o <- function(n,p,q=c(0.2,0.5)) {
   gammatrue=rep(0,p)
   true_index=seq(18,40,by=2)

@@ -3,7 +3,7 @@ Type: Package
 Title: Bayesian Compostional GLMs for Analyzing Microbiome Data
 Version: 0.1.1
 Author: Li Zhang
-Maintainer: Li Zhang <lzhang28@uab.edu>
+Maintainer: Li Zhang <Li.Zhang@fccc.edu>
 Description: Functions for fitting Bayesian compositional generalized linear models for analyzing microbiome data (BCGLM) with structured regularized horseshoe prior and a soft sum-to-zero restriction on coefficients through the prior distribution. 
 Depends: brms,BhGLM,phyloseq,stats,MASS
 License: GPL-2

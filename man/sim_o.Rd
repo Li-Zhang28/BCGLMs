@@ -19,3 +19,6 @@ sim_o(n, p, q = c(0.2, 0.5))
 \description{
 Simulation for ordinal response and compositional predictors
 }
+\references{
+\url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}
+}

@@ -1,10 +1,13 @@
 #' Simulation for continuous response and compositional predictors
+#' @description Simulation of data with dependent compositional predictors and continuous response.
+#' The complex dependence structure can be inferred from paper.
 #' @param n sample size
 #' @param p dimension of compositional predictors
 #' @return
 #' @export
 #' @import phyloseq
 #' @import MASS
+#' @references \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
 sim_c <- function(n,p) {
   gammatrue=rep(0,p)
   true_index=seq(18,40,by=2)

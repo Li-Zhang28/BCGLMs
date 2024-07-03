@@ -1,4 +1,5 @@
 #' Bayesian Compositional GLMs
+#' @description Bayesian compositional GLMs methods for microbiome data with continuous or binary outcome.
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (binary or continuous)
 #' @param family gaussian or bernoulli

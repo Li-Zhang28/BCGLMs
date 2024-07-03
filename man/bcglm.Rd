@@ -4,7 +4,7 @@
 \alias{bcglm}
 \title{Bayesian Compositional GLMs}
 \usage{
-bcglm(x, y, family = gaussian, plot = TRUE)
+bcglm(x, y, family = gaussian, similarity = NULL)
 }
 \arguments{
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
@@ -12,14 +12,20 @@ bcglm(x, y, family = gaussian, plot = TRUE)
 \item{y}{outcome (binary or continuous)}
 
 \item{family}{gaussian or bernoulli}
-
-\item{plot}{if TRUE, shows the plots (default = TRUE)}
 }
 \value{
 
 }
 \description{
-Bayesian Compositional GLMs
+Bayesian compositional GLMs methods for microbiome data with continuous or binary outcome.
+}
+\examples{
+dat=sim_c(200,100)
+          fit=bcglm(dat$x,dat$y)
+          summary(fit)
+          fixef(fit)
+          mcmc_plot(fit)
+
 }
 \references{
 \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
