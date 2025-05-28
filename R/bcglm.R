@@ -3,6 +3,7 @@
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (binary or continuous)
 #' @param family gaussian or bernoulli
+#' @param similarity measures the relatedness among taxa (deafult=NULL)
 #' @import phyloseq
 #' @import brms
 #' @import BhGLM

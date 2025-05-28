@@ -12,6 +12,8 @@ bcglm(x, y, family = gaussian, similarity = NULL)
 \item{y}{outcome (binary or continuous)}
 
 \item{family}{gaussian or bernoulli}
+
+\item{similarity}{measures the relatedness among taxa (deafult=NULL)}
 }
 \value{
 
