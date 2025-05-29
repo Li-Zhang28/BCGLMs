@@ -15,7 +15,8 @@
 #'           fit=bcglm(dat$x,dat$y,similarity=sim)
 #'           summary(fit)
 #'           fixef(fit)
-#'           mcmc_plot(fit)
+#'           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
+#'           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
 #'
 #' @author Li Zhang
 #' @references \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
@@ -53,7 +54,7 @@ bcglm <- function(x,y,family=gaussian,similarity=NULL) {
       stanvar(x=w, name="w", scode="vector[ln] w;", block="data")
 
     f4= brm(fm, data=dat,family=family,prior=bp4, stanvars=stanvars,control = list(adapt_delta = 0.99,max_treedepth= 18),
-            chains=2, iter=2000)
+            chains=4, iter=2000)
 
   }
 return(f4)

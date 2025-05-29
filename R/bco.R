@@ -2,6 +2,7 @@
 #' @description Bayesian compositional method for microbiome data with ordinal outcome.
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (ordinal)
+#' @param similarity measures the relatedness among taxa (deafult=NULL)
 #' @import phyloseq
 #' @import brms
 #' @import BhGLM
@@ -12,7 +13,8 @@
 #'           fit=bco(dat$x,dat$y)
 #'           summary(fit)
 #'           fixef(fit)
-#'           mcmc_plot(fit)
+#'           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
+#'           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
 #'
 #' @author Li Zhang
 #' @references \url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}
@@ -33,7 +35,7 @@ bco <- function(x,y,similarity=NULL) {
 
 
     f4= brm(fm, data=dat,family = cumulative("logit"),prior=bp4, init_r=0.1, control = list(adapt_delta = 0.99,max_treedepth= 20),
-            chains=2, iter=2000)
+            chains=4, iter=2000)
 
   }
 
@@ -53,7 +55,7 @@ bco <- function(x,y,similarity=NULL) {
     stanvar(x=w, name="w", scode="vector[ln] w;", block="data")
 
   f4= brm(fm, data=dat,family = cumulative("logit"),prior=bp4, stanvars=stanvars,init_r=0.1, control = list(adapt_delta = 0.99,max_treedepth= 20),
-          chains=2, iter=2000)
+          chains=4, iter=2000)
   }
   return(f4)
 }

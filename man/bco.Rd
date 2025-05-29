@@ -10,6 +10,8 @@ bco(x, y, similarity = NULL)
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
 
 \item{y}{outcome (ordinal)}
+
+\item{similarity}{measures the relatedness among taxa (deafult=NULL)}
 }
 \value{
 
@@ -22,7 +24,8 @@ dat=sim_o(200,100)
           fit=bco(dat$x,dat$y)
           summary(fit)
           fixef(fit)
-          mcmc_plot(fit)
+          mcmc_plot(fit,variable = "^b_X", regex = TRUE)
+          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
 
 }
 \references{
