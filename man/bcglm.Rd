@@ -4,7 +4,7 @@
 \alias{bcglm}
 \title{Bayesian Compositional GLMs}
 \usage{
-bcglm(x, y, family = gaussian, similarity = NULL)
+bcglm(x, y, family = gaussian, df_local = 1, df_global = 1, similarity = NULL)
 }
 \arguments{
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
@@ -13,7 +13,11 @@ bcglm(x, y, family = gaussian, similarity = NULL)
 
 \item{family}{gaussian or bernoulli}
 
-\item{similarity}{measures the relatedness among taxa (deafult=NULL)}
+\item{df_local}{the degree of freedom in half-t prior for local scale in horseshoe prior (default=1)}
+
+\item{df_global}{the degree of freedom in half-t prior for global scale in horseshoe prior (default=1)}
+
+\item{similarity}{measures the relatedness among taxa (default=NULL)}
 }
 \value{
 
@@ -24,11 +28,11 @@ Bayesian compositional GLMs methods for microbiome data with continuous or binar
 \examples{
 dat=sim_c(200,100)
           sim=similarity(dat$x)
-          fit=bcglm(dat$x,dat$y,similarity=sim)
+          fit=bcglm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,similarity=sim)
           summary(fit)
           fixef(fit)
           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
-          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
+          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6)
 
 }
 \references{

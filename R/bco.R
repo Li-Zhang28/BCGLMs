@@ -2,7 +2,9 @@
 #' @description Bayesian compositional method for microbiome data with ordinal outcome.
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (ordinal)
-#' @param similarity measures the relatedness among taxa (deafult=NULL)
+#' @param df_local the degree of freedom in half-t prior for local scale in horseshoe prior (default=1)
+#' @param df_global the degree of freedom in half-t prior for global scale in horseshoe prior (default=1)
+#' @param similarity measures the relatedness among taxa (default=NULL)
 #' @import phyloseq
 #' @import brms
 #' @import BhGLM
@@ -10,16 +12,16 @@
 #' @return
 #' @export
 #' @examples dat=sim_o(200,100)
-#'           fit=bco(dat$x,dat$y)
+#'           fit=bco(x=dat$x,y=dat$y,df_local=1,df_global=1)
 #'           summary(fit)
 #'           fixef(fit)
 #'           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
-#'           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
+#'           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6)
 #'
 #' @author Li Zhang
 #' @references \url{https://journals.sagepub.com/doi/abs/10.1177/09622802241247730}
 
-bco <- function(x,y,similarity=NULL) {
+bco <- function(x,y,df_local=1,df_global=1,similarity=NULL) {
 
   log_x=log(x)
 
@@ -30,7 +32,10 @@ bco <- function(x,y,similarity=NULL) {
   ### prior guess for 𝑚0
   if(is.null(similarity)){
 
-    bp4 = set_prior("horseshoe(df=3, df_global=3)", class="b")
+    bp4 = set_prior(
+      paste0("horseshoe(df=",df_local,", df_global=", df_global, ")"),
+      class = "b"
+    )
     bp4= bp4 + set_prior("target += normal_lpdf(mean(b) | 0, 0.001)", check=F) # sensitive to the variance of mean(b)
 
 
@@ -44,7 +49,10 @@ bco <- function(x,y,similarity=NULL) {
     node2=similarity$node2
     w=similarity$w
 
-  bp4 = set_prior("horseshoe(df=3, df_global=3)", class="b")
+    bp4 = set_prior(
+      paste0("horseshoe(df=",df_local,", df_global=", df_global, ")"),
+      class = "b"
+    )
   bp4= bp4 + set_prior("target += normal_lpdf(mean(b) | 0, 0.001)", check=F) # sensitive to the variance of mean(b)
   bp4 = bp4 + set_prior("target += -0.5*dot_self(w .* (log(hs_local[node1])-log(hs_local[node2])))", check=F)
 

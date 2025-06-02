@@ -4,7 +4,7 @@
 \alias{bcglmm}
 \title{Bayesian Compositional GLMMs}
 \usage{
-bcglmm(x, y, family = gaussian, dist = "bray")
+bcglmm(x, y, family = gaussian, df_local = 1, df_global = 1, dist = "bray")
 }
 \arguments{
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
@@ -12,6 +12,10 @@ bcglmm(x, y, family = gaussian, dist = "bray")
 \item{y}{outcome (binary or continuous)}
 
 \item{family}{gaussian or bernoulli}
+
+\item{df_local}{the degree of freedom in half-t prior for local scale in horseshoe prior (default=1)}
+
+\item{df_global}{the degree of freedom in half-t prior for global scale in horseshoe prior (default=1)}
 
 \item{dist}{method to calculate dissimilarity matrix, default is Bray-curtis}
 }
@@ -23,11 +27,11 @@ Bayesian compositional GLMMs methods for microbiome data with continuous or bina
 }
 \examples{
 dat=sim_cmm(200,100,0.2)
-          fit=bcglmm(dat$x,dat$y)
+          fit=bcglmm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,dist="bray")
           summary(fit)
           fixef(fit)
           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
-          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
+          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6)
 
 }
 \references{

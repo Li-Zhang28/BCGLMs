@@ -3,6 +3,8 @@
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (binary or continuous)
 #' @param family gaussian or bernoulli
+#' @param df_local the degree of freedom in half-t prior for local scale in horseshoe prior (default=1)
+#' @param df_global the degree of freedom in half-t prior for global scale in horseshoe prior (default=1)
 #' @param dist method to calculate dissimilarity matrix, default is Bray-curtis
 #' @import phyloseq
 #' @import brms
@@ -11,15 +13,15 @@
 #' @return
 #' @export
 #' @examples dat=sim_cmm(200,100,0.2)
-#'           fit=bcglmm(dat$x,dat$y)
+#'           fit=bcglmm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,dist="bray")
 #'           summary(fit)
 #'           fixef(fit)
 #'           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
-#'           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
+#'           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6)
 #'
 #' @author Li Zhang
 #' @references \url{https://link.springer.com/article/10.1186/s12859-025-06114-3}
-bcglmm <- function(x,y,family=gaussian,dist="bray") {
+bcglmm <- function(x,y,family=gaussian,df_local=1,df_global=1,dist="bray") {
 
   otu=otu_table(x,taxa_are_rows = F)
   dis.taxa = distance(otu, method=dist, type="taxa")
@@ -81,7 +83,10 @@ bcglmm <- function(x,y,family=gaussian,dist="bray") {
   ### prior guess for 𝑚0
 
 
-    bp4 = set_prior("horseshoe(df=3, df_global=3)", class="b")
+  bp4 = set_prior(
+    paste0("horseshoe(df=",df_local,", df_global=", df_global, ")"),
+    class = "b"
+  )
     bp4= bp4 + set_prior("target += normal_lpdf(mean(b) | 0, 0.001)", check=F) # sensitive to the variance of mean(b)
     bp4 = bp4 + set_prior("target += -0.5*dot_self(w .* (log(hs_local[node1])-log(hs_local[node2])))", check=F)
 

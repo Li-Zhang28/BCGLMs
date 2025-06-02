@@ -4,14 +4,18 @@
 \alias{bco}
 \title{Bayesian Compositional Ordinal Regression}
 \usage{
-bco(x, y, similarity = NULL)
+bco(x, y, df_local = 1, df_global = 1, similarity = NULL)
 }
 \arguments{
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
 
 \item{y}{outcome (ordinal)}
 
-\item{similarity}{measures the relatedness among taxa (deafult=NULL)}
+\item{df_local}{the degree of freedom in half-t prior for local scale in horseshoe prior (default=1)}
+
+\item{df_global}{the degree of freedom in half-t prior for global scale in horseshoe prior (default=1)}
+
+\item{similarity}{measures the relatedness among taxa (default=NULL)}
 }
 \value{
 
@@ -21,11 +25,11 @@ Bayesian compositional method for microbiome data with ordinal outcome.
 }
 \examples{
 dat=sim_o(200,100)
-          fit=bco(dat$x,dat$y)
+          fit=bco(x=dat$x,y=dat$y,df_local=1,df_global=1)
           summary(fit)
           fixef(fit)
           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
-          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),N = 6)
+          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6)
 
 }
 \references{
