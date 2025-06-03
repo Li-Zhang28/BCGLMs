@@ -24,7 +24,7 @@ bco(x, y, df_local = 1, df_global = 1, similarity = NULL)
 Bayesian compositional method for microbiome data with ordinal outcome.
 }
 \examples{
-dat=sim_o(400,100)
+dat=sim_o(n=400,p=100,q=c(0.2,0.5))
           fit=bco(x=dat$x,y=dat$y,df_local=1,df_global=1)
           summary(fit)
           fixef(fit)

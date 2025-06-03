@@ -11,7 +11,7 @@
 #' @importFrom stats gaussian quantile
 #' @return
 #' @export
-#' @examples dat=sim_o(400,100)
+#' @examples dat=sim_o(n=400,p=100,q=c(0.2,0.5))
 #'           fit=bco(x=dat$x,y=dat$y,df_local=1,df_global=1)
 #'           summary(fit)
 #'           fixef(fit)
@@ -40,7 +40,7 @@ bco <- function(x,y,df_local=1,df_global=1,similarity=NULL) {
 
 
     f4= brm(fm, data=dat,family = cumulative("logit"),prior=bp4, init_r=0.1, control = list(adapt_delta = 0.99,max_treedepth= 20),
-            chains=4, iter=2000)
+            chains=4, iter=4000)
 
   }
 

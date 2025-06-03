@@ -12,7 +12,7 @@
 #' @importFrom stats gaussian quantile
 #' @return
 #' @export
-#' @examples dat=sim_c(400,100)
+#' @examples dat=sim_c(n=400,p=100)
 #'           sim=similarity(dat$x)
 #'           fit=bcglm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,similarity=sim)
 #'           summary(fit)
@@ -40,7 +40,7 @@ bcglm <- function(x,y,family=gaussian,df_local=1,df_global=1,similarity=NULL) {
 
 
    f4= brm(fm, data=dat,family=family,prior=bp4, control = list(adapt_delta = 0.99,max_treedepth= 18),
-           chains=4, iter=2000)
+           chains=4, iter=4000)
 
  }
 
