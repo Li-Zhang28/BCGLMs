@@ -96,7 +96,7 @@ bcglmm <- function(x,y,family=gaussian,df_local=1,df_global=1,dist="bray") {
       stanvar(x=node2, name="node2", scode="int node2[ln];", block="data") +
       stanvar(x=w, name="w", scode="vector[ln] w;", block="data")
 
-    f5=brm(fm, data=dat, data2=list(A=A), family=gaussian(), prior=bp4, stanvars=stanvars, control = list(adapt_delta = 0.999,max_treedepth= 20), chains=4, iter=4000)
+    f5=brm(fm, data=dat, data2=list(A=A), family=family, prior=bp4, stanvars=stanvars, control = list(adapt_delta = 0.999,max_treedepth= 20), chains=4, iter=4000)
 
 
   return(f5)

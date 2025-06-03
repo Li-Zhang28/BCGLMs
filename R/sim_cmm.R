@@ -1,3 +1,4 @@
+#' Simulation for continuous response and mixed effects compositional predictors
 #' @description Simulation of data with dependent compositional predictors and continuous response.
 #' The simulation setting and dependence structure can be inferred from paper.
 #' @param n sample size
