@@ -26,7 +26,7 @@ bcglm(x, y, family = gaussian, df_local = 1, df_global = 1, similarity = NULL)
 Bayesian compositional GLMs methods for microbiome data with continuous or binary outcome.
 }
 \examples{
-dat=sim_c(200,100)
+dat=sim_c(400,100)
           sim=similarity(dat$x)
           fit=bcglm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,similarity=sim)
           summary(fit)

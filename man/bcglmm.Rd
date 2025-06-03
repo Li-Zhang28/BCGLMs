@@ -26,8 +26,8 @@ bcglmm(x, y, family = gaussian, df_local = 1, df_global = 1, dist = "bray")
 Bayesian compositional GLMMs methods for microbiome data with continuous or binary outcome.
 }
 \examples{
-dat=sim_cmm(200,100,0.2)
-          fit=bcglmm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,dist="bray")
+dat=sim_cmm(400,100,0.2)
+          fit=bcglmm(x=dat$x,y=dat$y,family=gaussian,df_local=3,df_global=3,dist="bray")
           summary(fit)
           fixef(fit)
           mcmc_plot(fit,variable = "^b_X", regex = TRUE)

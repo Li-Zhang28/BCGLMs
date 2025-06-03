@@ -11,7 +11,7 @@
 #' @importFrom stats gaussian quantile
 #' @return
 #' @export
-#' @examples dat=sim_o(200,100)
+#' @examples dat=sim_o(400,100)
 #'           fit=bco(x=dat$x,y=dat$y,df_local=1,df_global=1)
 #'           summary(fit)
 #'           fixef(fit)
@@ -63,7 +63,7 @@ bco <- function(x,y,df_local=1,df_global=1,similarity=NULL) {
     stanvar(x=w, name="w", scode="vector[ln] w;", block="data")
 
   f4= brm(fm, data=dat,family = cumulative("logit"),prior=bp4, stanvars=stanvars,init_r=0.1, control = list(adapt_delta = 0.99,max_treedepth= 20),
-          chains=4, iter=2000)
+          chains=4, iter=4000)
   }
   return(f4)
 }
