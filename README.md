@@ -12,7 +12,6 @@ Author: Li Zhang [lzhang28@uab.edu](mailto:lzhang28@uab.edu)
 For users running R version 4.4.1, the following code can be used to install the required packages and BCGLMs:
 
 ##
-
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("phyloseq")
@@ -23,6 +22,7 @@ remotes::install_github("nyiuab/BhGLM", force = TRUE, build_vignettes = TRUE)
 remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)
 
 # Example
+##
 dat=sim_c(n=400,p=100)
           sim=similarity(dat$x)
           fit=bcglm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,similarity=sim)
