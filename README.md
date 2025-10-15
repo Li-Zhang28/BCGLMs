@@ -12,14 +12,7 @@ Author: Li Zhang [lzhang28@uab.edu](mailto:lzhang28@uab.edu)
 For users running R version 4.4.1, the following code can be used to install the required packages and BCGLMs:
 
 ##
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("phyloseq")
-
-install.packages("remotes")
-remotes::install_github("paul-buerkner/brms")
-remotes::install_github("nyiuab/BhGLM", force = TRUE, build_vignettes = TRUE)
-remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)
+<pre> ```r if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager") BiocManager::install("phyloseq") install.packages("remotes") remotes::install_github("paul-buerkner/brms") remotes::install_github("nyiuab/BhGLM", force = TRUE, build_vignettes = TRUE) remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE) ``` </pre>
 
 # Example
 ##
