@@ -30,3 +30,10 @@ For users running R version 4.4.1, the following code can be used to install the
           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6) </pre>
 
+<pre> ```r dat = sim_c(n = 400, p = 100) 
+          sim = similarity(dat$x) 
+          fit = bcglm(x = dat$x, y = dat$y, family = gaussian, df_local = 1, df_global = 1, similarity = sim) 
+          summary(fit) 
+          fixef(fit) 
+          mcmc_plot(fit, variable = "^b_X", regex = TRUE) 
+          plot(fit, variable = c("b_X18", "b_X20", "b_X22", "b_X24", "b_X26", "b_X28"), nvariables = 6) ``` </pre>
