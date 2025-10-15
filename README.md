@@ -21,6 +21,8 @@ For users running R version 4.4.1, the following code can be used to install the
           remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)  </pre>
 
 # Example
+Fitting Bayesian compositional GLMs methods for microbiome data with continuous outcome.
+
 ##
 <pre> dat = sim_c(n = 400, p = 100) 
           sim = similarity(dat$x) 
