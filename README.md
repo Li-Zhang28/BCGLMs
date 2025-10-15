@@ -9,8 +9,25 @@ The models are fitted using efficient Hamiltonian Monte Carlo algorithm.
 Author: Li Zhang [lzhang28@uab.edu](mailto:lzhang28@uab.edu)
 
 # Installation 
+For users running R version 4.4.1, the following code can be used to install the required packages and BCGLMs:
 
-Install the released version of remotes from CRAN:
 ##
-    library(remotes)
-    install_github("Li-Zhang28/BCGLMs", force=T, build_vignettes=T)
+
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("phyloseq")
+
+install.packages("remotes")
+remotes::install_github("paul-buerkner/brms")
+remotes::install_github("nyiuab/BhGLM", force = TRUE, build_vignettes = TRUE)
+remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)
+
+# Example
+dat=sim_c(n=400,p=100)
+          sim=similarity(dat$x)
+          fit=bcglm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,similarity=sim)
+          summary(fit)
+          fixef(fit)
+          mcmc_plot(fit,variable = "^b_X", regex = TRUE)
+          plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6)
+
