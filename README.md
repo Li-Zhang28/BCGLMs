@@ -23,7 +23,9 @@ remotes::install_github("paul-buerkner/brms")
 remotes::install_github("nyiuab/BhGLM", force = TRUE)
 remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)</pre>
 
-Please check [Phyloseq documentation](https://www.bioconductor.org/packages/release/bioc/html/phyloseq.html) for more versions.
+**Note:**
+- Please check [Phyloseq documentation](https://www.bioconductor.org/packages/release/bioc/html/phyloseq.html) for more versions of phyloseq.
+- BhGLM is currently compatible with R ≤ 4.4.x. Users running R ≥ 4.5 may encounter installation or runtime errors because the package has not been updated for recent R versions.
 
 ## Install BCGLMs
 <pre>
