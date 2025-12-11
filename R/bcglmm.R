@@ -13,7 +13,8 @@
 #' @return
 #' @export
 #' @examples dat=sim_cmm(n=400,p=100,snr=0.2)
-#'           fit=bcglmm(x=dat$x,y=dat$y,family=gaussian,df_local=3,df_global=3,dist="bray")
+#'           otu=otu_table(dat$x,taxa_are_rows = F)
+#'           fit=bcglmm(x=dat$x,y=dat$y,otu=otu,family=gaussian,df_local=3,df_global=3,dist="bray")
 #'           summary(fit)
 #'           fixef(fit)
 #'           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
@@ -21,10 +22,21 @@
 #'
 #' @author Li Zhang
 #' @references \url{https://link.springer.com/article/10.1186/s12859-025-06114-3}
-bcglmm <- function(x,y,family=gaussian,df_local=1,df_global=1,dist="bray") {
+bcglmm <- function(x,y,otu,family=gaussian,df_local=1,df_global=1,dist="bray") {
+  # --- Input handling ---
+  # If x is already a phyloseq object, use directly
+  if (inherits(otu, "phyloseq")) {
+    phy <- otu
+  }
+  # If x is an otu_table, wrap it in a minimal phyloseq object
+  else if (inherits(otu, "otu_table")) {
+    phy <- phyloseq(otu)
+  }
+  else {
+    stop("Input must be a phyloseq or otu_table object.")
+  }
 
-  otu=otu_table(x,taxa_are_rows = F)
-  dis.taxa = distance(otu, method=dist, type="taxa")
+  dis.taxa = phyloseq::distance(phy, method=dist, type="taxa")
   dis.taxa = as.matrix(dis.taxa); dim(dis.taxa)
   ###similarity matrix
   simi.mat <- function(dis.mat)
@@ -61,7 +73,7 @@ bcglmm <- function(x,y,family=gaussian,df_local=1,df_global=1,dist="bray") {
   w = sqrt(abs(w)); length(w)
 
   ####
-  dis.sample = distance(otu, method=dist, type="sample")
+  dis.sample = distance(phy, method=dist, type="sample")
   dis.sample = as.matrix(dis.sample); dim(dis.sample)
 
   # construct similarity matrix from distance matrix

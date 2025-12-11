@@ -13,7 +13,9 @@
 #' @return
 #' @export
 #' @examples dat=sim_c(n=400,p=100)
-#'           sim=similarity(dat$x)
+#'           otu=otu_table(dat$x,taxa_are_rows = F)
+#'           dis.taxa = phyloseq::distance(otu, method = "bray", type = "taxa")
+#'           sim=similarity(dis.taxa)
 #'           fit=bcglm(x=dat$x,y=dat$y,family=gaussian,df_local=1,df_global=1,similarity=sim)
 #'           summary(fit)
 #'           fixef(fit)

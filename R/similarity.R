@@ -10,11 +10,17 @@
 #' @export
 #' @author Li Zhang
 #' @references \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9946}
-similarity <- function(x,dist="bray") {
-
-  otu=otu_table(x,taxa_are_rows = F)
-  dis.taxa = distance(otu, method=dist, type="taxa")
+similarity <- function(dis.taxa) {
   dis.taxa = as.matrix(dis.taxa); dim(dis.taxa)
+
+  # --- CHECK: must be square and symmetric ---
+  if (!is.matrix(dis.taxa) || nrow(dis.taxa) != ncol(dis.taxa)) {
+    stop("dis.taxa must be a square matrix.")
+  }
+  if (!all.equal(dis.taxa, t(dis.taxa), check.attributes = FALSE)) {
+    stop("dis.taxa must be symmetric.")
+  }
+
   ###similarity matrix
   simi.mat <- function(dis.mat)
   {
@@ -39,7 +45,7 @@ similarity <- function(x,dist="bray") {
   for (i in 1:(ncol(K.taxa)-1))
     for (j in (i+1):ncol(K.taxa))
     {
-      if(abs(K.taxa[i,j]) > quantile(abs(taxa))[4]) ###0.18
+      if(abs(K.taxa[i,j]) > 0.18) ###0.18
       {
         node1 = c(node1,i);
         node2 = c(node2,j);

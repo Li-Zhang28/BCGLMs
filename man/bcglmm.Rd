@@ -4,7 +4,15 @@
 \alias{bcglmm}
 \title{Bayesian Compositional GLMMs}
 \usage{
-bcglmm(x, y, family = gaussian, df_local = 1, df_global = 1, dist = "bray")
+bcglmm(
+  x,
+  y,
+  otu,
+  family = gaussian,
+  df_local = 1,
+  df_global = 1,
+  dist = "bray"
+)
 }
 \arguments{
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
@@ -27,7 +35,8 @@ Bayesian compositional GLMMs methods for microbiome data with continuous or bina
 }
 \examples{
 dat=sim_cmm(n=400,p=100,snr=0.2)
-          fit=bcglmm(x=dat$x,y=dat$y,family=gaussian,df_local=3,df_global=3,dist="bray")
+          otu=otu_table(dat$x,taxa_are_rows = F)
+          fit=bcglmm(x=dat$x,y=dat$y,otu=otu,family=gaussian,df_local=3,df_global=3,dist="bray")
           summary(fit)
           fixef(fit)
           mcmc_plot(fit,variable = "^b_X", regex = TRUE)

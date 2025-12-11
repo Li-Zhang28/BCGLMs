@@ -12,12 +12,14 @@
 #' @return
 #' @export
 #' @examples dat=sim_s(n=400,p=100)
-#'           sim=similarity(dat$x)
+#'           x=otu_table(dat$x,taxa_are_rows = F)
+#'           dis.taxa = phyloseq::distance(x, method = "bray", type = "taxa")
+#'           sim=similarity(dis.taxa)
 #'           fit=bccoxph(x=dat$x,y=dat$y,df_local=1,df_global=1,similarity=sim)
 #'           summary(fit)
 #'           fixef(fit)
-#'           mcmc_plot(fit,variable = "^b_X", regex = TRUE)
-#'           plot(fit,variable=c("b_X18","b_X20","b_X22","b_X24","b_X26","b_X28"),nvariables = 6)
+#'           mcmc_plot(fit,variable = "^b_x", regex = TRUE)
+#'           plot(fit,variable=c("b_x18","b_x20","b_x22","b_x24","b_x26","b_x28"),nvariables = 6)
 #'
 #' @author Zhenying Ding
 

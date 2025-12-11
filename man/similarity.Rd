@@ -4,7 +4,7 @@
 \alias{similarity}
 \title{Similarity matrix calculation}
 \usage{
-similarity(x, dist = "bray")
+similarity(dis.taxa)
 }
 \arguments{
 \item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
