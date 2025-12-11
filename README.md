@@ -11,7 +11,7 @@ Author: Li Zhang [lzhang28@uab.edu](mailto:lzhang28@uab.edu)
 # Installation 
 For users running R version 4.4.1, the following code can be used to install the required packages and BCGLMs:
 
-## Install Bioconductor dependency
+## Install dependency
 
 <pre>
 if (!require("BiocManager", quietly = TRUE)) {
@@ -24,6 +24,10 @@ remotes::install_github("nyiuab/BhGLM", force = TRUE)
 remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)</pre>
 
 Please check [Phyloseq documentation](https://www.bioconductor.org/packages/release/bioc/html/phyloseq.html) for more versions.
+
+## Install BCGLMs
+<pre>
+remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)</pre>
 
 # Example
 Fitting Bayesian compositional GLMs methods for microbiome data with continuous outcome.
