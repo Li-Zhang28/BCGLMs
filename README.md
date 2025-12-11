@@ -21,7 +21,7 @@ BiocManager::install("phyloseq")
 install.packages("remotes")
 remotes::install_github("paul-buerkner/brms")
 remotes::install_github("nyiuab/BhGLM", force = TRUE)
-remotes::install_github("Li-Zhang28/BCGLMs", force = TRUE, build_vignettes = TRUE)</pre>
+</pre>
 
 **Note:**
 - Please check [Phyloseq documentation](https://www.bioconductor.org/packages/release/bioc/html/phyloseq.html) for more versions of phyloseq.
