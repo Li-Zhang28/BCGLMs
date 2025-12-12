@@ -1,7 +1,6 @@
 #' Similarity matrix calculation
 #' @description We provide phylogenetic similarity choice to capture the phylogenetic relatedness among taxa.
-#' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
-#' @param dist method to calculate dissimilarity matrix, default is Bray-curtis
+#' @param dis.taxa distance matrix calculated based on either phylogenetic or non-phylogenetic methods
 #' @import phyloseq
 #' @import brms
 #' @import BhGLM

@@ -19,6 +19,8 @@ bcglmm(
 
 \item{y}{outcome (binary or continuous)}
 
+\item{otu}{a phyloseq object or otu_table object that used to calculate distance matrix}
+
 \item{family}{gaussian or bernoulli}
 
 \item{df_local}{the degree of freedom in half-t prior for local scale in horseshoe prior (default=1)}

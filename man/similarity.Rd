@@ -7,9 +7,7 @@
 similarity(dis.taxa)
 }
 \arguments{
-\item{x}{abundance matrix or data frame (rows are samples, columns are variables (taxa))}
-
-\item{dist}{method to calculate dissimilarity matrix, default is Bray-curtis}
+\item{dis.taxa}{distance matrix calculated based on either phylogenetic or non-phylogenetic methods}
 }
 \value{
 

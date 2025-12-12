@@ -2,6 +2,7 @@
 #' @description Bayesian compositional GLMMs methods for microbiome data with continuous or binary outcome.
 #' @param x abundance matrix or data frame (rows are samples, columns are variables (taxa))
 #' @param y outcome (binary or continuous)
+#' @param otu a phyloseq object or otu_table object that used to calculate distance matrix
 #' @param family gaussian or bernoulli
 #' @param df_local the degree of freedom in half-t prior for local scale in horseshoe prior (default=1)
 #' @param df_global the degree of freedom in half-t prior for global scale in horseshoe prior (default=1)
