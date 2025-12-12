@@ -9,7 +9,7 @@ The models are fitted using efficient Hamiltonian Monte Carlo algorithm.
 Author: Li Zhang [lzhang28@uab.edu](mailto:lzhang28@uab.edu)
 
 # Installation 
-For users running R version 4.4.1, the following code can be used to install the required packages and BCGLMs:
+For users running R version 4.4.x, the following code can be used to install the required packages and BCGLMs:
 
 ## Install dependency
 
